@@ -19,7 +19,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:5173',
-      'https://job-portal-website-raj-bhagats-projects.vercel.app/', // ← tumhara Vercel URL
+      'https://job-portal-website-tau.vercel.app/', // ← tumhara Vercel URL
     ],
     credentials: true,
   }),
