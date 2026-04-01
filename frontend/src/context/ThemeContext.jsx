@@ -12,23 +12,16 @@ export function ThemeProvider({ children }) {
   });
 
   useEffect(() => {
-    // Fix: pehle attribute set karo, phir localStorage
-    const root = document.documentElement;
-    root.setAttribute('data-theme', theme);
-    root.style.colorScheme = theme; // iOS Safari ke liye
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.style.colorScheme = theme;
     try {
       localStorage.setItem('jp_theme', theme);
     } catch {}
   }, [theme]);
 
+  // ✅ Sirf setTheme — DOM manually mat chhuoo
   const toggleTheme = () => {
-    setTheme((prev) => {
-      const next = prev === 'dark' ? 'light' : 'dark';
-      // Fix: turant DOM update karo, React re-render ka wait mat karo
-      document.documentElement.setAttribute('data-theme', next);
-      document.documentElement.style.colorScheme = next;
-      return next;
-    });
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   return (
